@@ -9,7 +9,7 @@ const Events = ({ data }) => {
       swipe={false}
       animation="slide"
     >
-      {data?.liveEvents?.map((item, i) => (
+      {data?.liveEvents?.map((item) => (
         <Event key={item.liveData.eventId} data={item} />
       ))}
     </Carousel>

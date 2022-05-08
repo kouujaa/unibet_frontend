@@ -1,26 +1,17 @@
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
+import { AppBarWrapper, NavWrapper } from "./NavBar.style";
 
 const UnibetLogo = require("src/assets/images/unibet-logo.png");
 
 const ButtonAppBar = () => {
   return (
-    <Box sx={{ flexGrow: 1, minHeigth: "20vh" }}>
-      <AppBar
-        position="static"
-        sx={{
-          minHeigth: "40vh",
-          backgroundColor: "#2e7423",
-          paddingTop: "15px",
-          paddingBottom: "15px",
-        }}
-      >
+    <NavWrapper>
+      <AppBarWrapper position="static">
         <Container maxWidth="md">
-          <img src={UnibetLogo} alt={"sport"} width={200} height={50} />
+          <img src={UnibetLogo} alt={"sport"} width={200} height={30} />
         </Container>
-      </AppBar>
-    </Box>
+      </AppBarWrapper>
+    </NavWrapper>
   );
 };
 

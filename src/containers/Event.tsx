@@ -1,6 +1,6 @@
 import fetchJsonp from "fetch-jsonp";
 import { useQuery } from "react-query";
-import Events from "src/components/Events/Events";
+import { Events } from "src/components";
 
 const EventContainer = () => {
   const fetchUnibetGames = async () => {
