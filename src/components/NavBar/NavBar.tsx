@@ -4,7 +4,7 @@ import Container from "@mui/material/Container";
 
 const UnibetLogo = require("src/assets/images/unibet-logo.png");
 
-export default function ButtonAppBar() {
+const ButtonAppBar = () => {
   return (
     <Box sx={{ flexGrow: 1, minHeigth: "20vh" }}>
       <AppBar
@@ -22,4 +22,6 @@ export default function ButtonAppBar() {
       </AppBar>
     </Box>
   );
-}
+};
+
+export default ButtonAppBar;

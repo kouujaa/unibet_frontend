@@ -2,27 +2,10 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
-import fetchJsonp from "fetch-jsonp";
-import { useQuery } from "react-query";
-import { NavBar, BottomNav } from "src/components";
-import Slider from "./partials/LeftSideInfo/Slider";
-
-const fetchUnibetGames = async () => {
-  const response = await fetchJsonp(
-    "http://api.unicdn.net/v1/feeds/sportsbook/event/live.jsonp?app_id=ca7871d7&app_key=5371c125b8d99c8f6b5ff9a12de8b85a"
-  );
-  return await response.json();
-};
+import { NavBar } from "src/components";
+import Events from "src/containers/Event";
 
 const Home = () => {
-  const { data, isLoading, error } = useQuery("unibet_games", fetchUnibetGames);
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (error) {
-    return <div>Error!</div>;
-  }
-
   return (
     <div
       style={{ width: "100vw", height: "100vh", backgroundColor: "#2e7423" }}
@@ -67,7 +50,7 @@ const Home = () => {
             </section>
             <div style={{ display: "flex", height: "60%", gap: "10px" }}>
               <div style={{ flex: 0.7 }}>
-                <Slider data={data} />
+                <Events />
               </div>
               <hr />
               <div
@@ -114,7 +97,6 @@ const Home = () => {
           <Typography
             style={{ color: "#999", fontSize: "14px", padding: "16px 8px" }}
           >
-            {" "}
             © 1997-2015, Unibet. All rights reserved.
           </Typography>
         </Container>
