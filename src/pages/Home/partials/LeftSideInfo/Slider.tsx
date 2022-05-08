@@ -1,13 +1,10 @@
 import { Button } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
-
-let BasketBallIcon = require("src/assets/images/basketball.png");
-let FootballIcon = require("src/assets/images/football.png");
-let TennisIcon = require("src/assets/images/tennis.png");
-let DefaultIcon = require("src/assets/images/default.png");
-let UnibetLogo = require("src/assets/images/unibet-logo.png");
+import iconBySport from "src/pages/Home/helpers/iconHelper";
+import formatDate from "./helpers/formatDate";
 
 const Slider = ({ data }) => {
+  console.log({ data });
   return (
     <Carousel
       autoPlay
@@ -20,23 +17,46 @@ const Slider = ({ data }) => {
         <div
           key={item.liveData.eventId}
           style={{
-            height: "60vh",
+            height: "20vh",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
             backgroundColor: "#222",
+            paddingBottom: "40px",
+            paddingTop: "30px",
           }}
         >
-          <div style={{ display: "flex" }}>
-            <h4 style={{ color: "#efbb05" }}>{item?.liveData?.score?.home}</h4>{" "}
-            <h4 style={{ color: "#efbb05" }}>-</h4>
-            <h4 style={{ color: "#efbb05" }}>{item?.liveData?.score?.away}</h4>
+          <div style={{ display: "flex", marginBottom: 0, padding: 0 }}>
+            <h2 style={{ color: "#efbb05" }}>{item?.liveData?.score?.home}</h2>{" "}
+            <h2 style={{ color: "#efbb05" }}>-</h2>
+            <h2 style={{ color: "#efbb05" }}>{item?.liveData?.score?.away}</h2>
           </div>
-          <div style={{ display: "flex", gap: "1em" }}>
-            <h2 style={{ color: "#fff" }}>{item.event.homeName}</h2>
-            <h2 style={{ color: "#fff" }}>-</h2>
-            <h2 style={{ color: "#fff" }}>{item.event.awayName}</h2>
+          <div
+            style={{
+              display: "flex",
+              gap: "1em",
+              alignItems: "center",
+            }}
+          >
+            <img
+              src={iconBySport(item?.event?.sport)}
+              alt={"sport"}
+              width={20}
+              height={20}
+            />
+            <h3 style={{ color: "#fff" }}>{item.event.homeName}</h3>
+            <h3 style={{ color: "#fff" }}>-</h3>
+            <h3 style={{ color: "#fff" }}>{item.event.awayName}</h3>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              gap: "1em",
+              alignItems: "center",
+            }}
+          >
+            <h6 style={{ color: "#999" }}>{formatDate(item.event.start)}</h6>
           </div>
           <Button
             onClick={() => {
@@ -47,7 +67,7 @@ const Slider = ({ data }) => {
             }}
             style={{ backgroundColor: "#3aaa35", color: "#fff" }}
           >
-            Place a bet!
+            Place a bet
           </Button>
         </div>
       ))}
